@@ -1,0 +1,72 @@
+
+countryNames <- c( "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", 
+    "Antigua and Barbuda", "Argentina", "Armenia", "Australia", 
+    "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", 
+    "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", 
+    "Bolivia (Plurinational State of)", "Bosnia and Herzegovina", 
+    "Botswana", "Brazil", "Brunei Darussalam", "Bulgaria", "Burkina Faso", 
+    "Burundi", "Côte d'Ivoire", "Cabo Verde", "Cambodia", 
+    "Cameroon", "Canada", "Central African Republic", "Chad", "Chile",
+    "China", "Colombia", "Comoros", "Congo", "Cook Islands", 
+    "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", 
+    "Democratic People's Republic of Korea", "Democratic Republic of the Congo", 
+    "Denmark", "Djibouti", "Dominica", "Dominican Republic", 
+    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea",
+    "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", 
+    "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", 
+    "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", 
+    "Honduras", "Hungary", "Iceland", "India", "Indonesia", 
+    "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", 
+    "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
+    "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", 
+    "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Lithuania",
+    "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", 
+    "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", 
+    "Mexico", "Micronesia (Federated States of)", "Monaco", "Mongolia",
+    "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", 
+    "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", 
+    "Niger", "Nigeria", "Niue", "Norway", "Oman", "Pakistan", 
+    "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", 
+    "Philippines", "Poland", "Portugal", "Qatar", "Republic of Korea" ,
+    "Republic of Moldova", "Romania", "Russian Federation", "Rwanda" ,
+    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
+    "Samoa", "San Marino", "Sao Tome and Principe", 
+    "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
+    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", 
+    "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", 
+    "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", 
+    "Syrian Arab Republic", "Tajikistan", "Thailand", 
+    "The former Yugoslav republic of Macedonia", "Timor-Leste", "Togo", 
+    "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", 
+    "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", 
+    "United Kingdom of Great Britain and Northern Ireland", "United Republic of Tanzania", 
+    "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", 
+    "Venezuela (Bolivarian Republic of)", "Viet Nam", "Yemen", "Zambia", 
+    "Zimbabwe" )
+
+shinyUI(fluidPage(
+    title="Life Expectancy",
+    headerPanel("Life Expectancy: Country Comparison"), 
+    fluidRow( 
+        column( 4, 
+          HTML("<p>&nbsp;</p>"),
+          selectInput('country1','Country 1 — ● —',choices= countryNames, selected="Japan") ,
+          selectInput('country2','Country 2 — ⁕ —',choices= countryNames, selected="Cambodia") , 
+          HTML("<p>&nbsp;</p>"),
+          h3("World Health Organization Data"),
+          p("Select two countries in above dropdowns to see the life expectancy of their nationals in the chart on the right, and in the data-table below."), 
+          p("The data shown is for males, females and the mean of the two."),
+          p("The table also shows the life expectancy at the age of 60 (not shown in the chart)."),
+          HTML("<p>&nbsp;</p>"),
+          h4("Data Source"),
+          HTML('<p><a href="http://apps.who.int/gho/data/node.main.688?lang=en">World Health Organisation Website</a><p>&nbsp;</p>')
+        ), 
+        column( 4, 
+          plotOutput('countryChart')
+        )
+    ),
+    fluidRow( 
+        dataTableOutput(outputId="datatable") 
+    )
+  )
+)
