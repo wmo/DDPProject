@@ -1,0 +1,60 @@
+---
+title       : Developing Dataproducts Project
+subtitle    : Shiny and Slidify 
+author      : Willem Moors
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Read And Weep
+
+1. Edit YAML front matter
+2. Write using R Markdown
+3. Use an empty line followed by three dashes to separate slides!
+
+--- .class #id 
+
+## Greatest difference between 1990 and 2012 
+
+For example the difference for all countries between 1990 and 2010 can be calculated as follows: 
+
+```{r}
+le<-readRDS("countrydata.rds")
+ledif<-      merge( le[ le$year==1990, c("country","le_birth")],
+                    le[ le$year==2012, c("country","le_birth")],
+                    by="country")
+
+ledif$df=ledif$le_birth.y-ledif$le_birth.x
+head(ledif)
+```
+
+--- 
+## Greatest negative change 
+
+Countries with the greatest negative change between 1990 and 2010: 
+```{r}
+head( ledif[order(ledif$df),c(1,4)])
+```
+
+
+--- 
+## Greatest positive change 
+
+Countries with the greatest positive change between 1990 and 2010:
+```{r}
+head( ledif[order(-ledif$df),c(1,4)])
+```
+
+
+--- .class #id 
+
+## Slide 2
+
+Slide 2 is interesting
+
+
