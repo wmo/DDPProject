@@ -7,10 +7,9 @@ framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
+mode        : standalone    # { was:selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
-
 
 <table><tr><td>
 
@@ -24,7 +23,7 @@ knit        : slidify::knit2slides
 
 <p>&nbsp;</p>
 
-The shiny webappllication I have developed is to produce a nice, simple chart of the life expectancy data taken from the WHO website. Also a datatable is provided.
+The shiny webapplication I have developed is one to produce a nice, simple chart of the life expectancy data taken from the WHO website. Also a datatable is provided.
 <p>&nbsp;</p>
 
 It's very simple to use: 
