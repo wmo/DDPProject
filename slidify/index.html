@@ -50,23 +50,23 @@
 
 <h2>Compare the life expectancy of countries</h2>
 
+<small>Credit goes to the World Health Organization, for allowing the use of their data.</small>
+
 </td></tr></table>
 
 <p>&nbsp;</p>
 
-<p>The shiny webapplication I have developed is one to produce a nice, simple chart of the life expectancy data taken from the WHO website. Also a datatable is provided.</p>
+<p>The shiny webapplication I have developed is one to produce a nice, simple chart of the life expectancy data taken from the WHO website. Also a datatable is provided, with the corresponding data.</p>
 
 <p>&nbsp;</p>
 
 <p>It&#39;s very simple to use: </p>
 
 <ul>
-<li>follow this link to the shiny app: <a href="https://wmoco.shinyapps.io/life_expectancy">life expectancy</a>, </li>
-<li>select two countries in the drop down boxes on the top left</li>
-<li>and admire the output. </li>
+<li>follow this link to the shiny app: <a href="https://wmoco.shinyapps.io/life_expectancy">life expectancy</a></li>
+<li>select two countries in the drop-down boxes on the top-left</li>
+<li>admire the output. </li>
 </ul>
-
-<p>&nbsp;</p>
 
 <p>So take some time now to play around with the app, then come back here and continue this presentation.</p>
 
@@ -76,7 +76,7 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Also have a look at the data</h2>
+    <h2>Have a look at the data</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -87,8 +87,8 @@
 </code></pre>
 
 <ul>
-<li>the data is pretty self explanatory, for more information have a peek at the <a href="http://apps.who.int/gho/data/node.main.688?lang=en">WHO site</a></li>
-<li>on the following pages there is an example of how to play around with it: how to calculate the difference in life expectation between 1990 and 2012. </li>
+<li>the data is pretty self explanatory, for more information have a peek at the <a href="http://apps.who.int/gho/data/node.main.688?lang=en">WHO site</a> where the data originated from.</li>
+<li>on the following pages there is an example of how to play around with it : how to calculate the difference in life expectation between 1990 and 2012. </li>
 </ul>
 
   </article>
@@ -102,12 +102,12 @@
   <article data-timings="">
     <p>Create a dataframe with a column for the 1990 data, and a column for the 2012 data:</p>
 
-<pre><code class="r">ledif&lt;-      merge( le[ le$year==1990, c(&quot;country&quot;,&quot;le_birth&quot;)],
-                    le[ le$year==2012, c(&quot;country&quot;,&quot;le_birth&quot;)],
-                    by=&quot;country&quot;)
+<pre><code class="r">ledif&lt;- merge( le[ le$year==1990, c(&quot;country&quot;,&quot;le_birth&quot;)],
+               le[ le$year==2012, c(&quot;country&quot;,&quot;le_birth&quot;)],
+               by=&quot;country&quot;)
 </code></pre>
 
-<p>Add a column that contains the difference of life-exceptancy:</p>
+<p>Add a column that contains the difference of life-expectancy:</p>
 
 <pre><code class="r">ledif$df=ledif$le_birth.y-ledif$le_birth.x
 head(ledif,3)
@@ -119,9 +119,13 @@ head(ledif,3)
 ## 3     Algeria         68         72  4
 </code></pre>
 
-<hr>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<p>Countries with the greatest negative change :</p>
+<slide class="" id="slide-4" style="background:;">
+  <article data-timings="">
+    <p>Countries with the greatest negative change :</p>
 
 <pre><code class="r">head( ledif[order(ledif$df),c(1,4)],3)
 </code></pre>
@@ -147,21 +151,6 @@ head(ledif,3)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
-  <hgroup>
-    <h2>Credits</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>Thanks for your time! </p></li>
-<li><p>Credit goes to the World Health Organization, for being allowed to use their data. </p></li>
-<li><p>And of course credit also due to Rstudio / Shiny and Slidify and the JHU datascience team! </p></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
     <slide class="backdrop"></slide>
   </slides>
   <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
@@ -174,7 +163,7 @@ head(ledif,3)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Also have a look at the data'>
+        data-slide=2 title='Have a look at the data'>
          2
       </a>
     </li>
@@ -186,7 +175,7 @@ head(ledif,3)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Credits'>
+        data-slide=4 title=''>
          4
       </a>
     </li>
